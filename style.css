@@ -1,0 +1,28 @@
+.header-custom {
+    background-color: #CCFFFF
+    
+
+}
+.font-header-custom{
+    font-weight: 600;
+    font-size: 19px
+
+}
+.navbar-custom {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    
+}
+.text-center{
+   text-align: center;
+}
+.body{
+    background: #343d46;
+  }
+   
+  .box{
+    margin: 100px auto;
+    width: 300px;
+    height: 50px;
+  }
