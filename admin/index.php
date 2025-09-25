@@ -4,6 +4,7 @@ session_start();
 if (!isset($_SESSION['admin'])) {
     header('location:login.php');
 }
+$currentView = isset($_GET['view']) ? $_GET['view'] : 'dashboard';
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +53,7 @@ if (!isset($_SESSION['admin'])) {
         <div id="page-body" class="d-flex">
             <div id="sidebar" class="bg-white">
                 <ul id="sidebar-menu">
-                    <li class="nav-link">
+                    <li class="nav-link <?php echo in_array($currentView, ['dashboard']) ? 'active' : ''; ?>">
                         <a href="?view=dashboard">
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="far fa-folder"></i>
@@ -61,7 +62,7 @@ if (!isset($_SESSION['admin'])) {
                         </a>
                         <i class="arrow fas fa-angle-right"></i>
                     </li>
-                    <li class="nav-link">
+                    <li class="nav-link <?php echo in_array($currentView, ['list-post', 'add-post']) ? 'active' : ''; ?>">
                         <a href="?view=list-post">
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="far fa-folder"></i>
@@ -76,21 +77,21 @@ if (!isset($_SESSION['admin'])) {
                         </ul>
                     </li>
 
-                    <li class="nav-link active">
+                    <li class="nav-link <?php echo in_array($currentView, ['list-product', 'add-product', 'cat-product']) ? 'active' : ''; ?>">
                         <a href="?view=list-product">
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="far fa-folder"></i>
                             </div>
                             Sản phẩm
                         </a>
-                        <i class="arrow fas fa-angle-down"></i>
+                        <i class="arrow fas fa-angle-right"></i>
                         <ul class="sub-menu">
                             <li><a href="?view=add-product">Thêm mới</a></li>
                             <li><a href="?view=list-product">Danh sách</a></li>
                             <li><a href="?view=cat-product">Danh mục</a></li>
                         </ul>
                     </li>
-                    <li class="nav-link">
+                    <li class="nav-link <?php echo in_array($currentView, ['list-order']) ? 'active' : ''; ?>">
                         <a href="?view=list-order">
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="far fa-folder"></i>
@@ -102,7 +103,7 @@ if (!isset($_SESSION['admin'])) {
                             <li><a href="?view=list-order">Đơn hàng</a></li>
                         </ul>
                     </li>
-                    <li class="nav-link">
+                    <li class="nav-link <?php echo in_array($currentView, ['list-user']) ? 'active' : ''; ?>">
                         <a href="?view=list-user">
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="far fa-folder"></i>
