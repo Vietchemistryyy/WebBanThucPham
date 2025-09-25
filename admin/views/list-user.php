@@ -1,5 +1,5 @@
 <?php 
-    $sql_Customer="SELECT * FROM thanhvien WHERE daXoa IS NULL ORDER BY ID_ThanhVien DESC";
+    $sql_Customer="SELECT * FROM thanhvien ORDER BY ID_ThanhVien DESC";
     $query_Customer=mysqli_query($mysqli,$sql_Customer);
 
 ?>
