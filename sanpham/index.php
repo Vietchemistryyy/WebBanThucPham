@@ -132,23 +132,25 @@ session_start();
          <?php
          while($row_product = mysqli_fetch_array($query_product)){
           ?>
-          
-          <form class="card" style="width: 25%; float:left" action="infoProduct.php?id_product=<?php echo $row_product['ID_SanPham'];?>" method="POST">
-           <div class="d-flex flex-column text-center border">
-             <img src="../image/product/<?php echo $row_product['Img'];?>" />
-             <h2><?php echo $row_product['TenSanPham'];?></h2>
-             <h6>Giá: <?php echo $row_product['GiaBan'];?> VND</h6>
-             <?php if(isset($_SESSION['TenDangNhap'])) { 
-        ?>
-        <input type="submit" class="btn btn-info" name='submit' value="Mua">  
-      <?php }else{ ?>
-        <input type="submit" class="btn btn-info" name='submit' value="Xem Thông Tin">
-      <?php 
-      } 
-      ?>
-             
-           </div>
-         </form>
+
+            <div class="card" style=" width: 25%; float: left; text-align: center  ">
+                <a href="../sanpham/infoProduct.php?id_product=<?php echo $row_product['ID_SanPham']; ?>" >
+                    <img src="../image/product/<?php echo $row_product['Img']; ?>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h2>
+                            <?php echo $row_product['TenSanPham']; ?>
+                        </h2>
+                        <h6>Giá:
+                            <?php echo $row_product['GiaBan']; ?> VND
+                        </h6>
+                </a>
+                    <a class="btn btn-info btn-add-to-cart"
+                       href="javascript:void(0)"
+                       data-id="<?php echo $row_product['ID_SanPham']; ?>"
+                       data-qty="1">
+                        Thêm vào giỏ </a>
+                </div>
+            </div>
          <?php
        }
        ?>
@@ -162,22 +164,25 @@ session_start();
    <?php
    while($row_vege = mysqli_fetch_array($query_vege)){
     ?>
-    
-    <form class="card" style="width: 25%; float:left" action="infoProduct.php?id_product=<?php echo $row_vege['ID_SanPham'];?>" method="POST">
-     <div class="d-flex flex-column text-center border">
-       <img src="../image/product/<?php echo $row_vege['Img'];?>" />
-       <h2><?php echo $row_vege['TenSanPham'];?></h2>
-       <h6>Giá: <?php echo $row_vege['GiaBan'];?> VND</h6>
-       <?php if(isset($_SESSION['TenDangNhap'])) { 
-        ?>
-        <input type="submit" class="btn btn-info" name='submit' value="Mua">  
-      <?php }else{ ?>
-        <input type="submit" class="btn btn-info" name='submit' value="Xem Thông Tin">
-      <?php 
-      } 
-      ?>
-    </div>
-  </form>
+
+     <div class="card" style=" width: 25%; float: left; text-align: center  ">
+             <a href="../sanpham/infoProduct.php?id_product=<?php echo $row_vege['ID_SanPham']; ?>" >
+                 <img src="../image/product/<?php echo $row_vege['Img']; ?>" class="card-img-top" alt="...">
+                 <div class="card-body">
+                     <h2>
+                         <?php echo $row_vege['TenSanPham']; ?>
+                     </h2>
+                     <h6>Giá:
+                         <?php echo $row_vege['GiaBan']; ?> VND
+                     </h6>
+             </a>
+             <a class="btn btn-info btn-add-to-cart"
+                href="javascript:void(0)"
+                data-id="<?php echo $row_vege['ID_SanPham']; ?>"
+                data-qty="1">
+                 Thêm vào giỏ </a>
+         </div>
+     </div>
   <?php
 }
 ?>
@@ -194,21 +199,24 @@ session_start();
 while($row_fru = mysqli_fetch_array($query_fru)){
   ?>
 
-  <form class="card" style="width: 25%; float:left" action="infoProduct.php?id_product=<?php echo $row_fru['ID_SanPham'];?>" method="POST">
-   <div class="d-flex flex-column text-center border">
-     <img src="../image/product/<?php echo $row_fru['Img'];?>" />
-     <h2><?php echo $row_fru['TenSanPham'];?></h2>
-     <h6>Giá: <?php echo $row_fru['GiaBan'];?> VND</h6>
-     <?php if(isset($_SESSION['TenDangNhap'])) { 
-        ?>
-        <input type="submit" class="btn btn-info" name='submit' value="Mua">  
-      <?php }else{ ?>
-        <input type="submit" class="btn btn-info" name='submit' value="Xem Thông Tin">
-      <?php 
-      } 
-      ?>
-   </div>
- </form>
+    <div class="card" style=" width: 25%; float: left; text-align: center  ">
+            <a href="../sanpham/infoProduct.php?id_product=<?php echo $row_fru['ID_SanPham']; ?>" >
+                <img src="../image/product/<?php echo $row_fru['Img']; ?>" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h2>
+                        <?php echo $row_fru['TenSanPham']; ?>
+                    </h2>
+                    <h6>Giá:
+                        <?php echo $row_fru['GiaBan']; ?> VND
+                    </h6>
+            </a>
+            <a class="btn btn-info btn-add-to-cart"
+               href="javascript:void(0)"
+               data-id="<?php echo $row_fru['ID_SanPham']; ?>"
+               data-qty="1">
+                Thêm vào giỏ </a>
+        </div>
+    </div>
  <?php
 }
 ?>
@@ -224,22 +232,24 @@ while($row_fru = mysqli_fetch_array($query_fru)){
  while($row_meat = mysqli_fetch_array($query_meat)){
   ?>
 
-  <form class="card" style="width: 25%; float:left" action="infoProduct.php?id=<?php echo $row_meat['ID_SanPham'];?>" method="POST">
-   <div class="d-flex flex-column text-center border">
-     <img src="../image/product/<?php echo $row_meat['Img'];?>" />
-     <h2><?php echo $row_meat['TenSanPham'];?></h2>
-     <h6>Giá: <?php echo $row_meat['GiaBan'];?> VND</h6>
-    <?php if(isset($_SESSION['TenDangNhap'])) { 
-        ?>
-        <input type="submit" class="btn btn-info" name='submit' value="Mua">  
-      <?php }else{ ?>
-        <input type="submit" class="btn btn-info" name='submit' value="Xem Thông Tin">
-      <?php 
-      } 
-      ?>
-     
-   </div>
- </form>
+    <div class="card" style=" width: 25%; float: left; text-align: center  ">
+            <a href="../sanpham/infoProduct.php?id_product=<?php echo $row_meat['ID_SanPham']; ?>" >
+                <img src="../image/product/<?php echo $row_meat['Img']; ?>" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h2>
+                        <?php echo $row_meat['TenSanPham']; ?>
+                    </h2>
+                    <h6>Giá:
+                        <?php echo $row_meat['GiaBan']; ?> VND
+                    </h6>
+            </a>
+            <a class="btn btn-info btn-add-to-cart"
+               href="javascript:void(0)"
+               data-id="<?php echo $row_meat['ID_SanPham']; ?>"
+               data-qty="1">
+                Thêm vào giỏ </a>
+        </div>
+    </div>
  <?php
 }
 ?>
@@ -274,4 +284,31 @@ while($row_fru = mysqli_fetch_array($query_fru)){
     </div>  
   </div>      
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).on("click", ".btn-add-to-cart", function(e) {
+        e.preventDefault();
+
+        let id = $(this).data("id");
+        let qty = $(this).data("qty");
+
+        $.ajax({
+            url: "../cart/addAjax.php",
+            type: "POST",
+            data: { id: id, soluong: qty },
+            dataType: "json",
+            success: function(res) {
+                if (res.success) {
+                    alert(res.message);
+                    $("#cart-count").text(res.cart_count);
+                } else {
+                    alert("Lỗi: " + res.message);
+                }
+            },
+            error: function() {
+                alert("Có lỗi xảy ra khi thêm vào giỏ hàng.");
+            }
+        });
+    });
+</script>
 </html>
