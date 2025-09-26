@@ -82,9 +82,9 @@ $query_product = mysqli_query($mysqli, $sql_product);
         ?>
         <div class="container">
 
-          <form action="sanpham/infoProduct.php?id_product=<?php echo $row_product['ID_SanPham']; ?>" method="POST">
             <div style="margin: 20px">
               <div class="card" style=" width: 25%; float: left; text-align: center  ">
+                  <a href="sanpham/infoProduct.php?id_product=<?php echo $row_product['ID_SanPham']; ?>" >
                 <img src="image/product/<?php echo $row_product['Img']; ?>" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h2>
@@ -93,12 +93,16 @@ $query_product = mysqli_query($mysqli, $sql_product);
                   <h6>Giá:
                     <?php echo $row_product['GiaBan']; ?> VND
                   </h6>
-                  <input type="submit" class="btn btn-info" name='submit' value="Mua">
+                  </a>
+                    <a class="btn btn-info btn-add-to-cart"
+                       href="javascript:void(0)"
+                       data-id="<?php echo $row_product['ID_SanPham']; ?>"
+                       data-qty="1">
+                        Thêm vào giỏ </a>
                 </div>
               </div>
             </div>
 
-          </form>
         </div>
       </div>
       <?php
@@ -106,21 +110,28 @@ $query_product = mysqli_query($mysqli, $sql_product);
       } else {
         ?>
       <div class="container">
-        <form action="sanpham/infoProduct.php?id_product=<?php echo $row_product['ID_SanPham']; ?>" method="POST">
-          <div class="card" style=" width: 25%; float: left; text-align: center  ">
-            <img src="image/product/<?php echo $row_product['Img']; ?>" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h2>
-                <?php echo $row_product['TenSanPham']; ?>
-              </h2>
-              <h6>Giá:
-                <?php echo $row_product['GiaBan']; ?> VND
-              </h6>
-              <input type="submit" class="btn btn-info" name='submit' value="Xem Thông Tin">
-            </div>
+          <div style="margin: 20px">
+              <div class="card" style=" width: 25%; float: left; text-align: center  ">
+                  <a href="sanpham/infoProduct.php?id_product=<?php echo $row_product['ID_SanPham']; ?>" >
+                      <img src="image/product/<?php echo $row_product['Img']; ?>" class="card-img-top" alt="...">
+                      <div class="card-body">
+                          <h2>
+                              <?php echo $row_product['TenSanPham']; ?>
+                          </h2>
+                          <h6>Giá:
+                              <?php echo $row_product['GiaBan']; ?> VND
+                          </h6>
+                  </a>
+                  <a class="btn btn-info btn-add-to-cart"
+                     href="javascript:void(0)"
+                     data-id="<?php echo $row_product['ID_SanPham']; ?>"
+                     data-qty="1">
+                      Thêm vào giỏ </a>
+              </div>
           </div>
-        </form>
       </div>
+
+          </div>
       <?php
       }
     }
@@ -141,8 +152,34 @@ $query_product = mysqli_query($mysqli, $sql_product);
 
 
 </body>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+    $(document).on("click", ".btn-add-to-cart", function(e) {
+        e.preventDefault();
+
+        let id = $(this).data("id");
+        let qty = $(this).data("qty");
+
+        $.ajax({
+            url: "cart/addAjax.php",
+            type: "POST",
+            data: { id: id, soluong: qty },
+            dataType: "json",
+            success: function(res) {
+                if (res.success) {
+                    alert(res.message);
+                    $("#cart-count").text(res.cart_count);
+                } else {
+                    alert("Lỗi: " + res.message);
+                }
+            },
+            error: function() {
+                alert("Có lỗi xảy ra khi thêm vào giỏ hàng.");
+            }
+        });
+    });
+</script>
 
 </html>
