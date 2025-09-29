@@ -156,7 +156,8 @@ session_start();
             if (isset($_POST['tukhoa'])) {
               ?>
               <?php
-              while ($row_search = mysqli_fetch_array($query_search)) {
+              if (mysqli_num_rows($query_search) > 0) {
+                while ($row_search = mysqli_fetch_array($query_search)) {
                 ?>
                 <form class="card" style="width: 50%; float:left"
                   action="infoProduct.php?id_product=<?php echo $row_search['ID_SanPham']; ?>" method="POST">
@@ -179,6 +180,9 @@ session_start();
                   </div>
                 </form>
                 <?php
+              }
+              } else {
+                echo "Không tìm thấy sản phẩm nào";
               }
             }
             ?>
