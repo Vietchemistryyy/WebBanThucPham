@@ -98,7 +98,7 @@ if (isset($_POST['submit'])) {
                         </ul>
                     </li>
 
-                    <li class="nav-link active">
+                    <li class="nav-link">
                         <a href="../index.php?view=list-product">
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="far fa-folder"></i>
@@ -124,7 +124,7 @@ if (isset($_POST['submit'])) {
                             <li><a href="../index.php?view=list-order">Đơn hàng</a></li>
                         </ul>
                     </li>
-                    <li class="nav-link">
+                    <li class="nav-link active">
                         <a href="../index.php?view=list-user">
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="far fa-folder"></i>

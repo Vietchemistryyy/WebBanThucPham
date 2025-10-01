@@ -103,7 +103,7 @@ $currentView = isset($_GET['view']) ? $_GET['view'] : 'dashboard';
                             <li><a href="?view=list-order">Đơn hàng</a></li>
                         </ul>
                     </li>
-                    <li class="nav-link <?php echo in_array($currentView, ['list-user']) ? 'active' : ''; ?>">
+                    <li class="nav-link <?php echo in_array($currentView, ['list-user', 'add-user']) ? 'active' : ''; ?>">
                         <a href="?view=list-user">
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="far fa-folder"></i>
@@ -113,7 +113,7 @@ $currentView = isset($_GET['view']) ? $_GET['view'] : 'dashboard';
                         <i class="arrow fas fa-angle-right"></i>
 
                         <ul class="sub-menu">
-
+                            <li><a href="?view=add-user">Thêm mới</a></li>
                             <li><a href="?view=list-user">Danh sách</a></li>
                         </ul>
                     </li>

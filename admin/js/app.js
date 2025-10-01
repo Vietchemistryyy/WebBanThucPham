@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('.nav-link.active .sub-menu').slideDown();
+    $('.nav-link.active .sub-menu').show();
 
     // Khi click vào icon mũi tên
     $('#sidebar-menu .arrow').click(function (e) {
